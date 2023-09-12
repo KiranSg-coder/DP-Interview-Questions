@@ -1,5 +1,7 @@
+
+// memoization approach
+
 class DecodeWays {
-    // Implement your Solution Here
     public int numDecodings(String s) { 
           int n = s.length();
           int[]  dp =new int[n+1];
@@ -23,14 +25,8 @@ class DecodeWays {
           ans1 = (ans1 + helper(s, id + 2, dp, mod)) % mod;
     }
 
-          dp[id] = ans1;
-          return ans1;
+          dp[id] = ans1;                                         // TC - O(n)
+          return ans1;                                           // Sc - O(n) + O(n) 
     }
-    public static void main(String args[]) {
-        Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
-        scanner.close();
-        int result = new DecodeWays().numDecodings(s);
-        System.out.println(result);
-     }
 }
+//---------------------------------------------------------------------------------------------------------------------------------
