@@ -1,0 +1,29 @@
+class Solution{
+    
+    static Boolean f(int ind, int arr[], int sum, Boolean [][] dp) {
+        
+        if(sum == 0) return true;
+        if(ind == 0) return (arr[0] == sum);
+        
+        if (dp[ind][sum] != null) return dp[ind][sum];
+        
+        boolean notpick = f(ind-1, arr, sum, dp);
+        boolean pick = false;
+        if( sum >= arr[ind]) {
+             pick = f(ind-1,arr, sum - arr[ind], dp);
+        }
+        
+        return dp[ind][sum] =  pick || notpick;
+    }
+
+
+    static Boolean isSubsetSum(int N, int arr[], int sum){
+        
+        Boolean  dp[][] = new Boolean [N][sum + 1];
+        for(int i=0; i<N; i++) {
+            Arrays.fill(dp[i], null);
+        }
+        
+        return f(N-1, arr, sum, dp);
+    }
+}
